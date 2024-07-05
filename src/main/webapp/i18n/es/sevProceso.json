@@ -1,0 +1,27 @@
+{
+  "pruebaApp": {
+    "sevProceso": {
+      "home": {
+        "title": "Sev Procesos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Sev Proceso",
+        "createOrEditLabel": "Crear o editar Sev Proceso",
+        "notFound": "Ningún Sev Procesos encontrado"
+      },
+      "created": "Un nuevo Sev Proceso ha sido creado con el identificador {{ param }}",
+      "updated": "Un Sev Proceso ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Sev Proceso ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Sev Proceso {{ id }}?"
+      },
+      "detail": {
+        "title": "Sev Proceso"
+      },
+      "id": "ID",
+      "idProceso": "Id Proceso",
+      "nombre": "Nombre",
+      "fkIdResponsable": "Fk Id Responsable",
+      "unidadNegocio": "Unidad Negocio"
+    }
+  }
+}

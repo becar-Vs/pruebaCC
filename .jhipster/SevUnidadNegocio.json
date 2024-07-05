@@ -1,0 +1,26 @@
+{
+  "annotations": {
+    "changelogDate": "20240705023900"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "idUnidadNegocio",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fkIdResponsable",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "SevUnidadNegocio",
+  "relationships": [],
+  "searchEngine": "no"
+}

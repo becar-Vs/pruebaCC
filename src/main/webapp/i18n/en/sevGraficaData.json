@@ -1,0 +1,28 @@
+{
+  "pruebaApp": {
+    "sevGraficaData": {
+      "home": {
+        "title": "Sev Grafica Data",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Sev Grafica Data",
+        "createOrEditLabel": "Create or edit a Sev Grafica Data",
+        "notFound": "No Sev Grafica Data found"
+      },
+      "created": "A new Sev Grafica Data is created with identifier {{ param }}",
+      "updated": "A Sev Grafica Data is updated with identifier {{ param }}",
+      "deleted": "A Sev Grafica Data is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sev Grafica Data {{ id }}?"
+      },
+      "detail": {
+        "title": "Sev Grafica Data"
+      },
+      "id": "ID",
+      "idRow": "Id Row",
+      "fechaObjetivo": "Fecha Objetivo",
+      "valorObjetivo": "Valor Objetivo",
+      "valorLogrado": "Valor Logrado",
+      "grafica": "Grafica"
+    }
+  }
+}

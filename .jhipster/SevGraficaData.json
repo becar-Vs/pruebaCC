@@ -1,0 +1,39 @@
+{
+  "annotations": {
+    "changelogDate": "20240705023903"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "idRow",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fechaObjetivo",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "valorObjetivo",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "valorLogrado",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "SevGraficaData",
+  "relationships": [
+    {
+      "otherEntityField": "idGrafica",
+      "otherEntityName": "sevGrafica",
+      "relationshipName": "grafica",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

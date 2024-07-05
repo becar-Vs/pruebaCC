@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (sevGrafica()) {
+      <div>
+        <h2 data-cy="sevGraficaDetailsHeading"><span jhiTranslate="pruebaApp.sevGrafica.detail.title">Sev Grafica</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="pruebaApp.sevGrafica.idGrafica">Id Grafica</span></dt>
+          <dd>
+            <span>{{ sevGrafica()!.idGrafica }}</span>
+          </dd>
+          <dt><span jhiTranslate="pruebaApp.sevGrafica.nombre">Nombre</span></dt>
+          <dd>
+            <span>{{ sevGrafica()!.nombre }}</span>
+          </dd>
+          <dt><span jhiTranslate="pruebaApp.sevGrafica.fkIdResponsable">Fk Id Responsable</span></dt>
+          <dd>
+            <span>{{ sevGrafica()!.fkIdResponsable }}</span>
+          </dd>
+          <dt><span jhiTranslate="pruebaApp.sevGrafica.proceso">Proceso</span></dt>
+          <dd>
+            @if (sevGrafica()!.proceso) {
+              <div>
+                <a [routerLink]="['/sev-proceso', sevGrafica()!.proceso?.id, 'view']">{{ sevGrafica()!.proceso?.idProceso }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/sev-grafica', sevGrafica()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

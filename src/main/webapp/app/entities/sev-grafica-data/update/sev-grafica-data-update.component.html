@@ -1,0 +1,141 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-sev-grafica-data-heading"
+        data-cy="SevGraficaDataCreateUpdateHeading"
+        jhiTranslate="pruebaApp.sevGraficaData.home.createOrEditLabel"
+      >
+        Crear o editar Sev Grafica Data
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_idRow" jhiTranslate="pruebaApp.sevGraficaData.idRow">Id Row</label>
+          <input type="number" class="form-control" name="idRow" id="field_idRow" data-cy="idRow" formControlName="idRow" />
+          @if (editForm.get('idRow')!.invalid && (editForm.get('idRow')!.dirty || editForm.get('idRow')!.touched)) {
+            <div>
+              @if (editForm.get('idRow')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small class="form-text text-danger" [hidden]="!editForm.get('idRow')?.errors?.number" jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fechaObjetivo" jhiTranslate="pruebaApp.sevGraficaData.fechaObjetivo">Fecha Objetivo</label>
+          <div class="input-group">
+            <input
+              id="field_fechaObjetivo"
+              data-cy="fechaObjetivo"
+              type="text"
+              class="form-control"
+              name="fechaObjetivo"
+              ngbDatepicker
+              #fechaObjetivoDp="ngbDatepicker"
+              formControlName="fechaObjetivo"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaObjetivoDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          @if (editForm.get('fechaObjetivo')!.invalid && (editForm.get('fechaObjetivo')!.dirty || editForm.get('fechaObjetivo')!.touched)) {
+            <div>
+              @if (editForm.get('fechaObjetivo')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_valorObjetivo" jhiTranslate="pruebaApp.sevGraficaData.valorObjetivo">Valor Objetivo</label>
+          <input
+            type="number"
+            class="form-control"
+            name="valorObjetivo"
+            id="field_valorObjetivo"
+            data-cy="valorObjetivo"
+            formControlName="valorObjetivo"
+          />
+          @if (editForm.get('valorObjetivo')!.invalid && (editForm.get('valorObjetivo')!.dirty || editForm.get('valorObjetivo')!.touched)) {
+            <div>
+              @if (editForm.get('valorObjetivo')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('valorObjetivo')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_valorLogrado" jhiTranslate="pruebaApp.sevGraficaData.valorLogrado">Valor Logrado</label>
+          <input
+            type="number"
+            class="form-control"
+            name="valorLogrado"
+            id="field_valorLogrado"
+            data-cy="valorLogrado"
+            formControlName="valorLogrado"
+          />
+          @if (editForm.get('valorLogrado')!.invalid && (editForm.get('valorLogrado')!.dirty || editForm.get('valorLogrado')!.touched)) {
+            <div>
+              @if (editForm.get('valorLogrado')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('valorLogrado')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_grafica" jhiTranslate="pruebaApp.sevGraficaData.grafica">Grafica</label>
+          <select
+            class="form-control"
+            id="field_grafica"
+            data-cy="grafica"
+            name="grafica"
+            formControlName="grafica"
+            [compareWith]="compareSevGrafica"
+          >
+            <option [ngValue]="null"></option>
+            @for (sevGraficaOption of sevGraficasSharedCollection; track $index) {
+              <option [ngValue]="sevGraficaOption">{{ sevGraficaOption.idGrafica }} - {{ sevGraficaOption.nombre }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

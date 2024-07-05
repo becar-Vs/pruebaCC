@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (sevProceso()) {
+      <div>
+        <h2 data-cy="sevProcesoDetailsHeading"><span jhiTranslate="pruebaApp.sevProceso.detail.title">Sev Proceso</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="pruebaApp.sevProceso.idProceso">Id Proceso</span></dt>
+          <dd>
+            <span>{{ sevProceso()!.idProceso }}</span>
+          </dd>
+          <dt><span jhiTranslate="pruebaApp.sevProceso.nombre">Nombre</span></dt>
+          <dd>
+            <span>{{ sevProceso()!.nombre }}</span>
+          </dd>
+          <dt><span jhiTranslate="pruebaApp.sevProceso.fkIdResponsable">Fk Id Responsable</span></dt>
+          <dd>
+            <span>{{ sevProceso()!.fkIdResponsable }}</span>
+          </dd>
+          <dt><span jhiTranslate="pruebaApp.sevProceso.unidadNegocio">Unidad Negocio</span></dt>
+          <dd>
+            @if (sevProceso()!.unidadNegocio) {
+              <div>
+                <a [routerLink]="['/sev-unidad-negocio', sevProceso()!.unidadNegocio?.id, 'view']">{{
+                  sevProceso()!.unidadNegocio?.idUnidadNegocio
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/sev-proceso', sevProceso()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

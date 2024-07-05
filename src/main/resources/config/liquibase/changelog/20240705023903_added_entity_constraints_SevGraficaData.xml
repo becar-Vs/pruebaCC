@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity SevGraficaData.
+    -->
+    <changeSet id="20240705023903-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="grafica_id"
+                                 baseTableName="sev_grafica_data"
+                                 constraintName="fk_sev_grafica_data__grafica_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sev_grafica"
+                                 />
+    </changeSet>
+</databaseChangeLog>

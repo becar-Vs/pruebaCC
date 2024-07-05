@@ -1,0 +1,27 @@
+{
+  "pruebaApp": {
+    "sevGrafica": {
+      "home": {
+        "title": "Sev Graficas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Sev Grafica",
+        "createOrEditLabel": "Create or edit a Sev Grafica",
+        "notFound": "No Sev Graficas found"
+      },
+      "created": "A new Sev Grafica is created with identifier {{ param }}",
+      "updated": "A Sev Grafica is updated with identifier {{ param }}",
+      "deleted": "A Sev Grafica is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sev Grafica {{ id }}?"
+      },
+      "detail": {
+        "title": "Sev Grafica"
+      },
+      "id": "ID",
+      "idGrafica": "Id Grafica",
+      "nombre": "Nombre",
+      "fkIdResponsable": "Fk Id Responsable",
+      "proceso": "Proceso"
+    }
+  }
+}

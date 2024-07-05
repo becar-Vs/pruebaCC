@@ -1,0 +1,107 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-sev-proceso-heading" data-cy="SevProcesoCreateUpdateHeading" jhiTranslate="pruebaApp.sevProceso.home.createOrEditLabel">
+        Crear o editar Sev Proceso
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_idProceso" jhiTranslate="pruebaApp.sevProceso.idProceso">Id Proceso</label>
+          <input type="number" class="form-control" name="idProceso" id="field_idProceso" data-cy="idProceso" formControlName="idProceso" />
+          @if (editForm.get('idProceso')!.invalid && (editForm.get('idProceso')!.dirty || editForm.get('idProceso')!.touched)) {
+            <div>
+              @if (editForm.get('idProceso')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('idProceso')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nombre" jhiTranslate="pruebaApp.sevProceso.nombre">Nombre</label>
+          <input type="text" class="form-control" name="nombre" id="field_nombre" data-cy="nombre" formControlName="nombre" />
+          @if (editForm.get('nombre')!.invalid && (editForm.get('nombre')!.dirty || editForm.get('nombre')!.touched)) {
+            <div>
+              @if (editForm.get('nombre')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fkIdResponsable" jhiTranslate="pruebaApp.sevProceso.fkIdResponsable"
+            >Fk Id Responsable</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="fkIdResponsable"
+            id="field_fkIdResponsable"
+            data-cy="fkIdResponsable"
+            formControlName="fkIdResponsable"
+          />
+          @if (
+            editForm.get('fkIdResponsable')!.invalid && (editForm.get('fkIdResponsable')!.dirty || editForm.get('fkIdResponsable')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('fkIdResponsable')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('fkIdResponsable')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_unidadNegocio" jhiTranslate="pruebaApp.sevProceso.unidadNegocio">Unidad Negocio</label>
+          <select
+            class="form-control"
+            id="field_unidadNegocio"
+            data-cy="unidadNegocio"
+            name="unidadNegocio"
+            formControlName="unidadNegocio"
+            [compareWith]="compareSevUnidadNegocio"
+          >
+            <option [ngValue]="null"></option>
+            @for (sevUnidadNegocioOption of sevUnidadNegociosSharedCollection; track $index) {
+              <option [ngValue]="sevUnidadNegocioOption">
+                {{ sevUnidadNegocioOption.idUnidadNegocio }}-{{ sevUnidadNegocioOption.nombre }}
+              </option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+
+entity SevUnidadNegocio {
+  idUnidadNegocio Integer required,
+  nombre String required,
+  fkIdResponsable Integer required // esta persona es el que crea las graficas
+}
+
+entity SevProceso {
+  idProceso Integer required,
+  nombre String required,
+  fkIdResponsable Integer required // esta persona es el que crea las graficas
+}
+
+entity SevGrafica {
+  idGrafica Integer required,
+  nombre String required,
+  fkIdResponsable Integer required // esta persona es el que crea las graficas
+}
+
+entity SevGraficaData {
+  idRow Integer required,
+  fechaObjetivo LocalDate required,
+  valorObjetivo Double required,
+  valorLogrado Double required
+}
+
+// Relaciones
+relationship ManyToOne {
+  SevProceso{unidadNegocio(idUnidadNegocio)} to SevUnidadNegocio
+}
+
+relationship ManyToOne {
+  SevGrafica{proceso(idProceso)} to SevProceso
+}
+
+relationship ManyToOne {
+  SevGraficaData{grafica(idGrafica)} to SevGrafica
+}

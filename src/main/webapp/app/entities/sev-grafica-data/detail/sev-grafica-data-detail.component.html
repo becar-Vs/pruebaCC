@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (sevGraficaData()) {
+      <div>
+        <h2 data-cy="sevGraficaDataDetailsHeading"><span jhiTranslate="pruebaApp.sevGraficaData.detail.title">Sev Grafica Data</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="pruebaApp.sevGraficaData.idRow">Id Row</span></dt>
+          <dd>
+            <span>{{ sevGraficaData()!.idRow }}</span>
+          </dd>
+          <dt><span jhiTranslate="pruebaApp.sevGraficaData.fechaObjetivo">Fecha Objetivo</span></dt>
+          <dd>
+            <span>{{ sevGraficaData()!.fechaObjetivo | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="pruebaApp.sevGraficaData.valorObjetivo">Valor Objetivo</span></dt>
+          <dd>
+            <span>{{ sevGraficaData()!.valorObjetivo }}</span>
+          </dd>
+          <dt><span jhiTranslate="pruebaApp.sevGraficaData.valorLogrado">Valor Logrado</span></dt>
+          <dd>
+            <span>{{ sevGraficaData()!.valorLogrado }}</span>
+          </dd>
+          <dt><span jhiTranslate="pruebaApp.sevGraficaData.grafica">Grafica</span></dt>
+          <dd>
+            @if (sevGraficaData()!.grafica) {
+              <div>
+                <a [routerLink]="['/sev-grafica', sevGraficaData()!.grafica?.id, 'view']">{{ sevGraficaData()!.grafica?.idGrafica }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/sev-grafica-data', sevGraficaData()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

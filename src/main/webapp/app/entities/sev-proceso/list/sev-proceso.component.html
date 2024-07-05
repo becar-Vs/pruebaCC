@@ -1,0 +1,107 @@
+<div>
+  <h2 id="page-heading" data-cy="SevProcesoHeading">
+    <span jhiTranslate="pruebaApp.sevProceso.home.title">Sev Procesos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="pruebaApp.sevProceso.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-sev-proceso"
+        [routerLink]="['/sev-proceso/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="pruebaApp.sevProceso.home.createLabel">Crear nuevo Sev Proceso</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (sevProcesos?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="pruebaApp.sevProceso.home.notFound">Ningún Sev Procesos encontrado</span>
+    </div>
+  }
+
+  @if (sevProcesos && sevProcesos.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="idProceso">
+              <div class="d-flex">
+                <span jhiTranslate="pruebaApp.sevProceso.idProceso">Id Proceso</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nombre">
+              <div class="d-flex">
+                <span jhiTranslate="pruebaApp.sevProceso.nombre">Nombre</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fkIdResponsable">
+              <div class="d-flex">
+                <span jhiTranslate="pruebaApp.sevProceso.fkIdResponsable">Fk Id Responsable</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="unidadNegocio.idUnidadNegocio">
+              <div class="d-flex">
+                <span jhiTranslate="pruebaApp.sevProceso.unidadNegocio">Unidad Negocio</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (sevProceso of sevProcesos; track trackId) {
+            <tr data-cy="entityTable">
+              <td>{{ sevProceso.idProceso }}</td>
+              <td>{{ sevProceso.nombre }}</td>
+              <td>{{ sevProceso.fkIdResponsable }}</td>
+              <td>
+                @if (sevProceso.unidadNegocio) {
+                  <div>
+                    <a [routerLink]="['/sev-unidad-negocio', sevProceso.unidadNegocio.id, 'view']">{{
+                      sevProceso.unidadNegocio.idUnidadNegocio
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/sev-proceso', sevProceso.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+                  </a>
+
+                  <a [routerLink]="['/sev-proceso', sevProceso.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(sevProceso)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

@@ -1,0 +1,26 @@
+{
+  "pruebaApp": {
+    "sevUnidadNegocio": {
+      "home": {
+        "title": "Sev Unidad Negocios",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Sev Unidad Negocio",
+        "createOrEditLabel": "Crear o editar Sev Unidad Negocio",
+        "notFound": "Ningún Sev Unidad Negocios encontrado"
+      },
+      "created": "Un nuevo Sev Unidad Negocio ha sido creado con el identificador {{ param }}",
+      "updated": "Un Sev Unidad Negocio ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Sev Unidad Negocio ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Sev Unidad Negocio {{ id }}?"
+      },
+      "detail": {
+        "title": "Sev Unidad Negocio"
+      },
+      "id": "ID",
+      "idUnidadNegocio": "Id Unidad Negocio",
+      "nombre": "Nombre",
+      "fkIdResponsable": "Fk Id Responsable"
+    }
+  }
+}
