@@ -2,6 +2,7 @@ import { Component, NgZone, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, ParamMap, Router, RouterModule } from '@angular/router';
 import { combineLatest, filter, Observable, Subscription, tap } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import dayjs from 'dayjs/esm';
 
 import SharedModule from 'app/shared/shared.module';
 import { sortStateSignal, SortDirective, SortByDirective, type SortState, SortService } from 'app/shared/sort';
@@ -33,7 +34,7 @@ export class SevGraficaDataComponent implements OnInit {
   isLoading = false;
 
   sortState = sortStateSignal({});
-
+  dayjs = dayjs;
   public router = inject(Router);
   protected sevGraficaDataService = inject(SevGraficaDataService);
   protected activatedRoute = inject(ActivatedRoute);

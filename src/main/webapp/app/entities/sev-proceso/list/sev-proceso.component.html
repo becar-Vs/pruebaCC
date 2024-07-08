@@ -74,9 +74,9 @@
               <td>
                 @if (sevProceso.unidadNegocio) {
                   <div>
-                    <a [routerLink]="['/sev-unidad-negocio', sevProceso.unidadNegocio.id, 'view']">{{
-                      sevProceso.unidadNegocio.idUnidadNegocio
-                    }}</a>
+                    <a [routerLink]="['/sev-unidad-negocio', sevProceso.unidadNegocio.id, 'view']"
+                      >{{ sevProceso.unidadNegocio.idUnidadNegocio }} / {{ sevProceso.unidadNegocio.nombre }}
+                    </a>
                   </div>
                 }
               </td>

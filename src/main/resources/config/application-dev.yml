@@ -42,7 +42,7 @@ spring:
   messages:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
   r2dbc:
-    url: r2dbc:postgresql://localhost:5432/visexito2
+    url: r2dbc:postgresql://localhost:5432/viseF
     username: postgres
     password: root
   thymeleaf:

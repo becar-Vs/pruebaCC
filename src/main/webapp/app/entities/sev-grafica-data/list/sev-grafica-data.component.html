@@ -76,13 +76,16 @@
           @for (sevGraficaData of sevGraficaData; track trackId) {
             <tr data-cy="entityTable">
               <td>{{ sevGraficaData.idRow }}</td>
-              <td>{{ sevGraficaData.fechaObjetivo | formatMediumDate }}</td>
+              <td>{{ dayjs(sevGraficaData.fechaObjetivo).format('DD/MM/YY') }}</td>
+
               <td>{{ sevGraficaData.valorObjetivo }}</td>
               <td>{{ sevGraficaData.valorLogrado }}</td>
               <td>
                 @if (sevGraficaData.grafica) {
                   <div>
-                    <a [routerLink]="['/sev-grafica', sevGraficaData.grafica.id, 'view']">{{ sevGraficaData.grafica.idGrafica }}</a>
+                    <a [routerLink]="['/sev-grafica', sevGraficaData.grafica.id, 'view']"
+                      >{{ sevGraficaData.grafica.idGrafica }} / {{ sevGraficaData.grafica.nombre }}</a
+                    >
                   </div>
                 }
               </td>
